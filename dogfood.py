@@ -23,15 +23,13 @@ bsObj = open_page(site)
 f = open("food_urls.txt", "w")
 
 def get_next_page(html, bsObj):
-    #if ???
     for i in range (1, 32):
         new_url = "http://slimdoggy.com/dogfood/page/" + str(i) + "/?searchtype=basic&foodtype=All&foodbrand=All&foodranking=All&brandrecipesearch&ingredientsin&ingredientsout=propylene%20glycol%20AND%20ethoxyquin%20AND%20BHA%20AND%20BHT%20AND%20TBHQ%20AND%20propyl%20gallate"
         html = urlopen(new_url)
         bsObj = BeautifulSoup(html, "html.parser")
         get_player_pages(html,bsObj)
-    #else ???
 
-def get_player_pages(html, bsObj):
+def get_detail_pages(html, bsObj):
     #get 3rd table
     table = bsObj.findAll("table")[2]
     #get all td elements from table
@@ -43,5 +41,5 @@ def get_player_pages(html, bsObj):
             f.write("no href\n")
     get_next_page(html, bsObj)
 
-get_player_pages(html, bsObj)
+get_detail_pages(html, bsObj)
 f.close()
