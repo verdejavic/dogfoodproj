@@ -24,8 +24,9 @@ bsObj = open_page(site)
 #get 3rd table
 table = bsObj.findAll("table")[2]
 #get all td elements from table
-td_list = table.findAll("td")
-#get links to detail pgs and print them
-for link in td_list:
-    links = link.findAll("a", "href")
-    print(links)
+a_list = table.findAll("a")
+
+
+for link in a_list:
+    if 'href' in link.attrs:
+        print(str(link.attrs['href']))
