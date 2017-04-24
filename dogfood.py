@@ -21,8 +21,11 @@ def open_page(site):
 
 bsObj = open_page(site)
 
-tables = bsObj.findAll("table")
-for table in tables[2]:
-    td_list = table.findAll("td")
-    links = td_list.find("a", "href")
+#get 3rd table
+table = bsObj.findAll("table")[2]
+#get all td elements from table
+td_list = table.findAll("td")
+#get links to detail pgs and print them
+for link in td_list:
+    links = link.findAll("a", "href")
     print(links)
