@@ -21,7 +21,7 @@ def open_page(site):
 
 bsObj = open_page(site)
 
-tables = bsObj.find("table")
+tables = bsObj.findAll("table")
 for table in tables[2]:
     td_list = table.findAll("td")
     links = td_list.find("a", "href")
